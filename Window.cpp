@@ -38,6 +38,9 @@ std::string Window::directory = "/Users/ailsafan/Desktop/demo/demo2/obj/";
 
 // Light
 PointLight * Window::ptLight;
+DirectionalLight * Window::dirLight;
+SpotLight * Window::spotLight;
+Light * currLight;
 
 // Colors
 Material * Window::emerald = new Material(glm::vec3(0.0215, 0.1745, 0.0215), glm::vec3(0.07568, 0.61424, 0.07568),
@@ -108,8 +111,11 @@ bool Window::initializeProgram() {
 }
 
 bool Window::initializeObjects() {    
-    // Initialize point lights
-    ptLight = new PointLight(glm::vec3(1.f), glm::vec3(0, 100, 0), 0.01);
+    // Initialize lights
+    ptLight = new PointLight(glm::vec3(1.f), glm::vec3(50, 0, 0), 0.04);
+    dirLight = new DirectionalLight(glm::vec3(1.f), glm::vec3(-100, 100, 0));
+    spotLight = new SpotLight(glm::vec3(1.f), glm::vec3(20, 0, 0), 0.01, 25.f, 30.f);
+    currLight = spotLight;
     
     // Initialize cameras
     cameras[0] = new Camera(glm::vec3(200, 0, 0), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
@@ -262,7 +268,6 @@ bool Window::initializeObjects() {
 
 void Window::cleanUp() {
     // Deallcoate the objects.
-    // TODO: ~Transform()
     delete world;
 
     // Delete the shader program.
@@ -369,7 +374,7 @@ void Window::displayCallback(GLFWwindow* window) {
 
     // Render the objects
     skybox->draw(currCam->newView, projection, skyboxShader);
-    ptLight->draw(phongShader, glm::mat4(1));
+    currLight->draw(phongShader, glm::mat4(1));
     
     glUseProgram(phongShader);
     glUniformMatrix4fv(glGetUniformLocation(phongShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -500,6 +505,18 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
                 currCam->setLookPos(currCam->getLookPos() + glm::vec3(cameraSpeed, 0, 0));
                 break;
                 
+            case GLFW_KEY_P:
+                currLight = ptLight;
+                break;
+                
+            case GLFW_KEY_D:
+                currLight = dirLight;
+                break;
+                
+            case GLFW_KEY_S:
+                currLight = spotLight;
+                break;
+                
             default:
                 break;
         }
@@ -559,7 +576,7 @@ void Window::cursorPositionCallback(GLFWwindow* window, double xPos, double yPos
             glm::vec3 rotAxis = glm::cross(prevPos, currPos);
             float rotAngle = velocity * 2;
             //ptBall->rotateObj(rotAngle, rotAxis);
-            ptLight->rotate(rotAngle, rotAxis);
+            currLight->rotate(rotAngle, rotAxis);
         }
         prevPos = currPos;
     }
@@ -568,9 +585,9 @@ void Window::cursorPositionCallback(GLFWwindow* window, double xPos, double yPos
 void Window::scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
     glm::vec3 trans;
     GLfloat multiLt = 1 + 0.1 * yoffset;
-    glm::vec3 pos = ptLight->getPos();
+    glm::vec3 pos = currLight->getPos();
     trans = glm::vec3(glm::scale(glm::mat4(1), glm::vec3(multiLt)) * glm::vec4(pos, 1.0));
     //ptBall->translate(trans);
-    ptLight->setPos(trans);
+    currLight->setPos(trans);
     //ptBall->scale(multiObj);
 }

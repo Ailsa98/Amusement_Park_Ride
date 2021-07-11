@@ -23,6 +23,8 @@
 		46CB2CE3268A0DBF00348B4A /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F7DA8B268786F600D133E3 /* Transform.cpp */; };
 		46CB2CE4268A0DC500348B4A /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4614ACAB2683567D00131E49 /* Window.cpp */; };
 		46DD97F8268359E4009F6CF5 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46DD97F7268359D2009F6CF5 /* shaders */; };
+		46F53CA6269AA87700417D85 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F53CA4269AA87700417D85 /* DirectionalLight.cpp */; };
+		46F53CAE269AB4CB00417D85 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F53CAD269AB4CB00417D85 /* SpotLight.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +76,10 @@
 		469D5DA42686390F00BEADAD /* SpotLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotLight.h; sourceTree = "<group>"; };
 		469D5DA62686391000BEADAD /* PointLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
 		46DD97F7268359D2009F6CF5 /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
+		46F53CA4269AA87700417D85 /* DirectionalLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
+		46F53CA5269AA87700417D85 /* DirectionalLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalLight.h; sourceTree = "<group>"; };
+		46F53CAA269AAADD00417D85 /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
+		46F53CAD269AB4CB00417D85 /* SpotLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpotLight.cpp; sourceTree = "<group>"; };
 		46F7DA83268786F500D133E3 /* Sphere.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
 		46F7DA84268786F500D133E3 /* Sphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
 		46F7DA86268786F500D133E3 /* Geometry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometry.cpp; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 		4614AC942683563700131E49 = {
 			isa = PBXGroup;
 			children = (
+				46F53CAA269AAADD00417D85 /* Light.h */,
+				46F53CA4269AA87700417D85 /* DirectionalLight.cpp */,
+				46F53CA5269AA87700417D85 /* DirectionalLight.h */,
 				464A1230268B26EE00E8090C /* Material.h */,
 				46F7DA902687870F00D133E3 /* obj */,
 				46F7DA8F2687870F00D133E3 /* skybox */,
@@ -124,6 +133,7 @@
 				464A1237268CA82900E8090C /* PointLight.cpp */,
 				469D5DA62686391000BEADAD /* PointLight.h */,
 				469D5DA42686390F00BEADAD /* SpotLight.h */,
+				46F53CAD269AB4CB00417D85 /* SpotLight.cpp */,
 				46DD97F7268359D2009F6CF5 /* shaders */,
 				4614ACA72683567C00131E49 /* Cube.cpp */,
 				4614ACAA2683567D00131E49 /* Cube.h */,
@@ -218,6 +228,7 @@
 				46CB2CE3268A0DBF00348B4A /* Transform.cpp in Sources */,
 				4614ACB82683567D00131E49 /* shader.cpp in Sources */,
 				46CB2CE12689ADE500348B4A /* Geometry.cpp in Sources */,
+				46F53CAE269AB4CB00417D85 /* SpotLight.cpp in Sources */,
 				4614ACB72683567D00131E49 /* PointCloud.cpp in Sources */,
 				464A123B268CB36D00E8090C /* Camera.cpp in Sources */,
 				46CB2CE4268A0DC500348B4A /* Window.cpp in Sources */,
@@ -226,6 +237,7 @@
 				4649BE8C268864A70077AC27 /* Sphere.cpp in Sources */,
 				464A1238268CA82900E8090C /* PointLight.cpp in Sources */,
 				4649BE8B268859360077AC27 /* Skybox.cpp in Sources */,
+				46F53CA6269AA87700417D85 /* DirectionalLight.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

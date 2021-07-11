@@ -10,6 +10,8 @@
 #include "Geometry.h"
 #include "Sphere.h"
 #include "PointLight.h"
+#include "DirectionalLight.h"
+#include "SpotLight.h"
 #include "Camera.h"
 
 class Window {
@@ -62,7 +64,8 @@ public:
     
     // Light
     static PointLight * ptLight;
-    //static PointCloud * ptBall;
+    static DirectionalLight * dirLight;
+    static SpotLight * spotLight;
     
     // Projection matrix:
     static glm::mat4 projection;
